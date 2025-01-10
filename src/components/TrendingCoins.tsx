@@ -3,6 +3,7 @@ import { ChevronDown } from "lucide-react";
 import { useTrending } from "../hooks/GetTrending";
 
 export default function TrendingCoins() {
+  // @ts-ignore
   const { trending, isLoading, error } = useTrending(3);
 
   if (error) {
@@ -17,10 +18,7 @@ export default function TrendingCoins() {
           {trending &&
             trending.map((item, index) => {
               return (
-                <div
-                  key={index}
-                  className="flex justify-between items-center"
-                >
+                <div key={index} className="flex justify-between items-center">
                   <div className="text-sm flex gap-1 items-center">
                     <img
                       src={item.icon}

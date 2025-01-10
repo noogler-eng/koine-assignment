@@ -33,7 +33,7 @@ function App() {
         <Coin coin={coin} />
         <div className="flex w-full gap-4">
           <MainLeft coin={coin} />
-          <MainRight setCoin={setCoin} />
+          <MainRight />
         </div>
       </div>
       <Footer />
