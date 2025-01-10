@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <nav className="flex items-center justify-between px-6 py-4 bg-gray-100">
       <div>
-        <img src="/koinx.png" alt="Logo" className="h-8 w-auto" />
+        <img src="/koinx.png" alt="Logo" className="h-5 w-auto" />
       </div>
       <div className="flex space-x-4 items-center">
         <Link to="/" className="text-gray-800 hover:text-blue-600">

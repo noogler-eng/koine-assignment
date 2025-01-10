@@ -1,49 +1,64 @@
-import trendingCoins from "../data/consData";
 import { ChevronUp } from "lucide-react";
 import { ChevronDown } from "lucide-react";
+import { useTrending } from "../hooks/GetTrending";
+import { useEffect } from "react";
 
-export default function TrendingCoins({ setCoin }: { setCoin: any }) {
+export default function TrendingCoins() {
+  const { trending, isLoading, error } = useTrending();
+
+  if (error) {
+    return <div>error...</div>;
+  }
+
   return (
     <div className="w-full bg-white rounded-xl">
       <div className="p-5">
         <div className="font-semibold text-xl">Trending Coins (24h)</div>
         <div className="flex flex-col gap-3 mt-5">
-          {trendingCoins.map((item, index) => {
-            return (
-              <div
-                key={index}
-                className="flex justify-between items-center"
-                onClick={() => {
-                  setCoin({
-                    name: item.title.split("(")[0],
-                    priceUsd: "",
-                    priceInr: "",
-                    image: item.image,
-                    shortForm: item.shortForm,
-                    percent: item.percent,
-                    gain: item.gain
-                  });
-                }}
-              >
-                <div className="text-sm flex gap-1 items-center">
-                  <img src={item.image} />
-                  {item.title}
-                </div>
+          {trending &&
+            trending.map((item, index) => {
+              return (
                 <div
-                  className={`flex gap-1 items-center rounded-lg text-sm p-1 px-2 ${
-                    item.gain == "Increment" ? "bg-green-200" : "bg-red-200"
-                  }`}
+                  key={index}
+                  className="flex justify-between items-center"
+                  //   onClick={() => {
+                  //     setCoin({
+                  //       name: item.title.split("(")[0],
+                  //       priceUsd: "",
+                  //       priceInr: "",
+                  //       image: item.image,
+                  //       shortForm: item.shortForm,
+                  //       percent: item.percent,
+                  //       gain: item.gain,
+                  //     });
+                  //   }}
                 >
-                  {item.gain == "Increment" ? (
-                    <ChevronUp color="#14B079" size={15} />
-                  ) : (
-                    <ChevronDown size={15} />
-                  )}{" "}
-                  <p className="text-[#14B079] text-sm">{item.percent}</p>
+                  <div className="text-sm flex gap-1 items-center">
+                    <img
+                      src={item.icon}
+                      height={40}
+                      width={40}
+                      className="rounded-full"
+                    />
+                    {item.name}
+                  </div>
+                  <div
+                    className={`flex gap-1 items-center rounded-lg text-sm p-1 px-2 w-20 ${
+                      item.gain == "Increment"
+                        ? "bg-green-200 text-[#51a687]"
+                        : "bg-red-200 text-[#FF0000]"
+                    }`}
+                  >
+                    {item.gain == "Increment" ? (
+                      <ChevronUp color="#51a687" size={10} />
+                    ) : (
+                      <ChevronDown size={10} color="#FF0000" />
+                    )}{" "}
+                    <p className="text-sm">{item.percent}</p>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
       </div>
     </div>

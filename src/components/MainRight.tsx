@@ -8,7 +8,8 @@ export default function MainRight({ setCoin }: { setCoin: any }) {
         <Advertisment />
       </div>
       <div>
-        <TrendingCoins setCoin={setCoin} />
+        {/* <TrendingCoins setCoin={setCoin} /> */}
+        <TrendingCoins />
       </div>
     </div>
   );
