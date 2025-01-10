@@ -8,7 +8,6 @@ import Main from "./sections/Main";
 import Sentiments from "./sections/Sentiments";
 import Team from "./sections/Team";
 import Tokenomics from "./sections/Tokenomics";
-import { useEffect, useState } from "react";
 
 type Gain = "Increment" | "Decrement";
 
@@ -79,7 +78,7 @@ export default function MainLeft({
                 key={index}
                 className={`${
                   location.pathname == item.link
-                    ? "border-b-2 border-blue-600"
+                    ? "border-b-2 border-blue-600 text-blue-600"
                     : ""
                 } font-semibold pb-3`}
               >
@@ -89,7 +88,7 @@ export default function MainLeft({
           })}
         </div>
       </div>
-      <div>
+      <div className="mt-4">
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/fundamentals" element={<Fundamentals />} />

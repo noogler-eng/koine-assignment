@@ -7,6 +7,7 @@ import Coin from "./components/Coin";
 import Footer from "./components/Footer";
 
 function App() {
+  // @ts-ignore
   const [coin, setCoin] = useState<{
     name: string;
     priceUsd: string;
