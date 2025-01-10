@@ -4,6 +4,7 @@ import MainRight from "./components/MainRight";
 import Navbar from "./components/Navbar";
 import "./index.css";
 import Coin from "./components/Coin";
+import Footer from "./components/Footer";
 
 function App() {
   const [coin, setCoin] = useState<{
@@ -35,7 +36,7 @@ function App() {
           <MainRight setCoin={setCoin} />
         </div>
       </div>
-      <div></div>
+      <Footer />
     </div>
   );
 }

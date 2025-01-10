@@ -22,7 +22,7 @@ export default function MainLeft({
       <MainHeader coin={coin} />
       <MainPrices coin={coin} />
       <div className="mt-8 w-full h-[450px]">
-        <TradingViewChart coinName={coin.shortForm}/>
+        <TradingViewChart coinName={coin.shortForm} />
       </div>
     </div>
   );

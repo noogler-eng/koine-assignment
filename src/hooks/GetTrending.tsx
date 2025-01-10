@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export function useTrending() {
+export function useTrending(limit: number) {
   const [trending, setTrending] = useState<
     | null
     | {
         icon: string;
-        name: String;
+        name: string;
         shortName: string;
         percent: string;
+        sparkline: string;
+        usdPrice: string;
         gain: "Increment" | "Decrement";
       }[]
   >(null);
@@ -29,13 +31,18 @@ export function useTrending() {
         }
       );
 
-      const topCoins = res.data.coins.slice(0, 3).map((coin: any) => {
+      const topCoins = res.data.coins.slice(0, limit).map((coin: any) => {
         const percentChange = coin.item.data.price_change_percentage_24h.usd;
+        const usdPrice = coin.item.data.price;
+        const sparkline = coin.item.data.sparkline;
+        console.log("sparkline: ", sparkline);
         return {
           icon: coin.item.small,
           name: coin.item.name,
           shortName: coin.item.symbol,
           percent: `${percentChange.toFixed(2)}%`,
+          sparkline: sparkline,
+          usdPrice: usdPrice,
           gain: percentChange >= 0 ? "Increment" : "Decrement",
         };
       });

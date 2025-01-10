@@ -1,10 +1,9 @@
 import { ChevronUp } from "lucide-react";
 import { ChevronDown } from "lucide-react";
 import { useTrending } from "../hooks/GetTrending";
-import { useEffect } from "react";
 
 export default function TrendingCoins() {
-  const { trending, isLoading, error } = useTrending();
+  const { trending, isLoading, error } = useTrending(3);
 
   if (error) {
     return <div>error...</div>;
@@ -21,23 +20,12 @@ export default function TrendingCoins() {
                 <div
                   key={index}
                   className="flex justify-between items-center"
-                  //   onClick={() => {
-                  //     setCoin({
-                  //       name: item.title.split("(")[0],
-                  //       priceUsd: "",
-                  //       priceInr: "",
-                  //       image: item.image,
-                  //       shortForm: item.shortForm,
-                  //       percent: item.percent,
-                  //       gain: item.gain,
-                  //     });
-                  //   }}
                 >
                   <div className="text-sm flex gap-1 items-center">
                     <img
                       src={item.icon}
-                      height={40}
-                      width={40}
+                      height={36}
+                      width={36}
                       className="rounded-full"
                     />
                     {item.name}
